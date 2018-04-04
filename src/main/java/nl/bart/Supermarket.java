@@ -56,9 +56,7 @@ public class Supermarket {
         System.out.println(str);
     }
 
-    public void addProduct(Product product) {
-        this.products.add(product);
-        System.out.println("This is in your supermarket:");
+    private void printProducts() {
         for (int i = 0; i < products.size(); i++) {
             printStuff("\t" + products.get(i).getName() + ", $" + products.get(i).getPrice() + ", " + products.get(i).showDiscount());
             if (i != products.size() - 1) {
@@ -67,6 +65,11 @@ public class Supermarket {
                 printLine(".");
             }
         }
+    }
+
+    public void addProduct(Product product) {
+        this.products.add(product);
+        System.out.println("This is in your supermarket:");
     }
 
     public void removeProduct(Product product) {
