@@ -57,6 +57,7 @@ public class Supermarket {
     }
 
     private void printProducts() {
+        System.out.println("This is in your supermarket:");
         for (int i = 0; i < products.size(); i++) {
             printStuff("\t" + products.get(i).getName() + ", $" + products.get(i).getPrice() + ", " + products.get(i).showDiscount());
             if (i != products.size() - 1) {
@@ -69,11 +70,14 @@ public class Supermarket {
 
     public void addProduct(Product product) {
         this.products.add(product);
-        System.out.println("This is in your supermarket:");
+
+        printProducts();
     }
 
     public void removeProduct(Product product) {
         this.products.remove(product);
+
+        printProducts();
     }
 
     private int getDayOfWeekNumber() {
