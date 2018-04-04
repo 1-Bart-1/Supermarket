@@ -38,6 +38,10 @@ public class Supermarket {
             }
     };
 
+    public CashDesk getCashDesk() {
+        return cashDesk;
+    }
+
     private DateFormat dateFormat1 = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
     private Date date = new Date();
     private DateFormat dateFormat2 = new SimpleDateFormat("EEEE");

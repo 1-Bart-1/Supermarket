@@ -6,7 +6,8 @@ import java.util.concurrent.TimeUnit;
  * Hello world!
  */
 public class App {
-    public static void main(String[] args) throws InterruptedException {
+
+    public static void main(String[] args) {
         Supermarket supermarket = new Supermarket();
         Discount twoForThree = new Discount(34, "2 for price of 3", "","", 5, 9, true);
         Product milk = new Product("Milk", 99, twoForThree);
@@ -17,5 +18,6 @@ public class App {
         supermarket.openClose();
         supermarket.addProduct(sugar);
         supermarket.removeProduct(milk);
+
     }
 }
