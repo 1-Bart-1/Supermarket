@@ -73,12 +73,16 @@ public class Supermarket {
     }
 
     public void addProduct(Product product) {
+        printLine("Adding " + product.getName() + ", $" + product.getPrice() + ", " + product.showDiscount() + " to your " + this.brand);
+
         this.products.add(product);
 
-        printProducts();
+        this.printProducts();
     }
 
     public void removeProduct(Product product) {
+        printLine("Removing " + product.getName() + ", $" + product.getPrice() + ", " + product.showDiscount() + " from your " + this.brand);
+
         this.products.remove(product);
 
         printProducts();
