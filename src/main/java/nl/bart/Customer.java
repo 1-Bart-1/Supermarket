@@ -15,4 +15,14 @@ public class Customer {
             System.out.println();
         }
     }
+
+    public void addProduct(Product product) {
+        trolley.add(product);
+        check.add(product);
+    }
+
+    public void removeProduct(Product product) {
+        trolley.remove(product);
+        trolley.remove(product);
+    }
 }
