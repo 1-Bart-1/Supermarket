@@ -52,40 +52,32 @@ public class Supermarket {
         System.out.println("Your supermarket is a " + this.brand + ".");
     }
 
-    private void printStuff(String str) {
-        System.out.print(str);
-    }
-
-    private void printLine(String str) {
-        System.out.println(str);
-    }
-
-    private void printProducts() {
-        System.out.println("This is in your supermarket:");
-        for (int i = 0; i < products.size(); i++) {
-            printStuff("\t" + products.get(i).getName() + ", $" + products.get(i).getPrice() + ", " + products.get(i).showDiscount());
-            if (i != products.size() - 1) {
-                printLine(",");
-            } else {
-                printLine(".");
-            }
-        }
-    }
+//    private void printProducts() {
+//        System.out.println("This is in your supermarket:");
+//        for (int i = 0; i < products.size(); i++) {
+//            App.printStuff("\t" + products.get(i).getName() + ", $" + products.get(i).getPrice() + ", " + products.get(i).showDiscount());
+//            if (i != products.size() - 1) {
+//                App.printLine(",");
+//            } else {
+//                App.printLine(".");
+//            }
+//        }
+//    }
 
     public void addProduct(Product product) {
-        printLine("Adding " + product.getName() + ", $" + product.getPrice() + ", " + product.showDiscount() + " to your " + this.brand);
+        App.printLine("Adding " + product.getName() + ", $" + product.getPrice() + ", " + product.showDiscount() + " to your " + this.brand);
 
         this.products.add(product);
 
-        this.printProducts();
+        App.printProducts(products, "supermarket");
     }
 
     public void removeProduct(Product product) {
-        printLine("Removing " + product.getName() + ", $" + product.getPrice() + ", " + product.showDiscount() + " from your " + this.brand);
+        App.printLine("Removing " + product.getName() + ", $" + product.getPrice() + ", " + product.showDiscount() + " from your " + this.brand);
 
         this.products.remove(product);
 
-        printProducts();
+        App.printProducts(products, "supermarket");
     }
 
     private int getDayOfWeekNumber() {
@@ -112,11 +104,11 @@ public class Supermarket {
         this.hourTime = Integer.parseInt("" + this.date.toString().charAt(11) + this.date.toString().charAt(12)) + 2;
         if ((this.hourTime >= this.openingTimes[dayOfWeek][0]) && (this.hourTime <= this.openingTimes[dayOfWeek][1])) {
             this.opened = true;
-            printLine("Whoohooo! The " + this.brand + " is opened now!");
+            App.printLine("Whoohooo! The " + this.brand + " is opened now!");
             return;
         }
 
         this.opened = false;
-        printLine("Nope, don't even try to get into the " + this.brand);
+        App.printLine("Nope, don't even try to get into the " + this.brand);
     }
 }

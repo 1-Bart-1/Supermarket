@@ -9,21 +9,22 @@ public class Customer {
     private ArrayList<Product> check = new ArrayList<Product>();
     private ELocation location;
 
-    public void setInShop(boolean inShop) {
-        this.inShop = inShop;
-        if (inShop) {
-            System.out.println();
-        }
+    public void walk(ELocation location) {
+        this.location = location;
+        System.out.println("You're at the " + this.location.toString() + " of the supermarket.");
     }
 
     public void addProduct(Product product) {
+        App.printLine("Adding " + product.getName() + ", $" + product.getPrice() + ", " + product.showDiscount() + " to your trolley.");
+
         this.trolley.add(product);
-        this.check.add(product);
+
+        App.printProducts(trolley, "trolley");
     }
 
     public void removeProduct(Product product) {
         this.trolley.remove(product);
-        this.trolley.remove(product);
+        this.check.remove(product);
     }
 
     public void pay(int price) {

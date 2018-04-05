@@ -6,6 +6,25 @@ import java.util.ArrayList;
  * Hello world!
  */
 public class App {
+    public static void printStuff(String str) {
+        System.out.print(str);
+    }
+
+    public static void printLine(String str) {
+        System.out.println(str);
+    }
+
+    public static void printProducts(ArrayList<Product> products, String toShow) {
+        System.out.println("This is in your " + toShow + ":");
+        for (int i = 0; i < products.size(); i++) {
+            printStuff("\t" + products.get(i).getName() + ", $" + products.get(i).getPrice() + ", " + products.get(i).showDiscount());
+            if (i != products.size() - 1) {
+                printLine(",");
+            } else {
+                printLine(".");
+            }
+        }
+    }
 
     public static void main(String[] args) {
         Supermarket supermarket = new Supermarket();
@@ -29,6 +48,6 @@ public class App {
 
         System.out.println();
 
-//        customer.addProduct(milk);
+        customer.addProduct(milk);
     }
 }
