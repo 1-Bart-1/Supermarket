@@ -9,7 +9,7 @@ public class Customer {
     private ArrayList<Product> check = new ArrayList<Product>();
     private ELocation location;
 
-    Supermarket supermarket = new Supermarket();
+    private Supermarket supermarket = new Supermarket();
 
     public void walk(ELocation location) {
         this.location = location;
@@ -38,6 +38,7 @@ public class Customer {
 
     public void pay(int price) {
         this.money -= price;
+        System.out.println(supermarket.getCashDesk());
     }
 
     public void receiveChange(int amount) {

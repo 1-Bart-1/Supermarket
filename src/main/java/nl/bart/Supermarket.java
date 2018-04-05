@@ -52,18 +52,6 @@ public class Supermarket {
         System.out.println("Your supermarket is a " + this.brand + ".");
     }
 
-//    private void printProducts() {
-//        System.out.println("This is in your supermarket:");
-//        for (int i = 0; i < products.size(); i++) {
-//            App.printStuff("\t" + products.get(i).getName() + ", $" + products.get(i).getPrice() + ", " + products.get(i).showDiscount());
-//            if (i != products.size() - 1) {
-//                App.printLine(",");
-//            } else {
-//                App.printLine(".");
-//            }
-//        }
-//    }
-
     public void addProduct(Product product) {
         App.printLine("Adding " + product.getName() + ", $" + product.getPrice() + ", " + product.showDiscount() + " to your " + this.brand);
 
