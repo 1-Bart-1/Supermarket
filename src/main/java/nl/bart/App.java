@@ -47,7 +47,10 @@ public class App {
         supermarket.addProduct(carbon);
 
         System.out.println();
+        System.out.println("Switching to customer's point of view...");
+        System.out.println();
 
         customer.addProduct(milk);
+        supermarket.removeProduct(milk);
     }
 }
