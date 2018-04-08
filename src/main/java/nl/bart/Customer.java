@@ -5,6 +5,8 @@ import java.util.ArrayList;
 public class Customer {
     private boolean inShop;
     private int money = 100;
+    private int payMoney;
+    private int change = 0;
     private ArrayList<Product> trolley = new ArrayList<Product>();
     private ArrayList<Product> check = new ArrayList<Product>();
     private ELocation location;
@@ -35,11 +37,14 @@ public class Customer {
     }
 
     public void pay(int price) {
-        this.money -= price;
-        System.out.println(App.supermarket.getCashDesk());
+        this.payMoney = price + 5;
+        this.money -= this.payMoney;
+        this.receiveChange(price);
     }
 
-    public void receiveChange(int amount) {
-        this.money += amount;
+    public void receiveChange(int price) {
+        this.change = App.supermarket.getCashDesk(price, this.payMoney);
+        System.out.println(this.change);
+        this.money += change;
     }
 }

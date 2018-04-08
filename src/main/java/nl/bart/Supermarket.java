@@ -38,8 +38,8 @@ public class Supermarket {
             }
     };
 
-    public CashDesk getCashDesk() {
-        return cashDesk;
+    public int getCashDesk(int price, int money) {
+        return cashDesk.payChange(price, money);
     }
 
     private DateFormat dateFormat1 = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
