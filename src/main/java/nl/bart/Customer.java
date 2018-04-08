@@ -9,8 +9,6 @@ public class Customer {
     private ArrayList<Product> check = new ArrayList<Product>();
     private ELocation location;
 
-    private Supermarket supermarket = new Supermarket();
-
     public void walk(ELocation location) {
         this.location = location;
         System.out.println("You're at the " + this.location.toString() + " of the supermarket.");
@@ -23,7 +21,7 @@ public class Customer {
 
         App.printProducts(trolley, "trolley");
 
-        supermarket.removeProduct(product);
+        App.supermarket.removeProduct(product);
     }
 
     public void removeProduct(Product product) {
@@ -33,12 +31,12 @@ public class Customer {
 
         App.printProducts(trolley, "trolley");
 
-        supermarket.addProduct(product);
+        App.supermarket.addProduct(product);
     }
 
     public void pay(int price) {
         this.money -= price;
-        System.out.println(supermarket.getCashDesk());
+        System.out.println(App.supermarket.getCashDesk());
     }
 
     public void receiveChange(int amount) {

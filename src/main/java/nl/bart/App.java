@@ -6,6 +6,8 @@ import java.util.ArrayList;
  * Hello world!
  */
 public class App {
+    public final static Supermarket supermarket = new Supermarket();
+
     public static void printStuff(String str) {
         System.out.print(str);
     }
@@ -27,7 +29,6 @@ public class App {
     }
 
     public static void main(String[] args) {
-        Supermarket supermarket = new Supermarket();
         Customer customer = new Customer();
 
         Discount twoForThree = new Discount(34, "2 for price of 3", "","", 5, 9, true);
