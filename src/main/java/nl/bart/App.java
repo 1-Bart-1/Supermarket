@@ -52,6 +52,6 @@ public class App {
         System.out.println();
 
         customer.addProduct(milk);
-        customer.pay(milk.getPrice());
+        customer.pay();
     }
 }

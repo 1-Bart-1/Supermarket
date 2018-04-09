@@ -7,6 +7,7 @@ public class Customer {
     private int money = 100;
     private int payMoney;
     private int change = 0;
+    private int productsAmount = 0;
     private ArrayList<Product> trolley = new ArrayList<Product>();
     private ArrayList<Product> check = new ArrayList<Product>();
     private ELocation location;
@@ -17,6 +18,7 @@ public class Customer {
     }
 
     public void addProduct(Product product) {
+        this.productsAmount++;
         App.printLine("Adding " + product.getName() + ", $" + product.getPrice() + ", " + product.showDiscount() + " to your trolley.");
 
         this.trolley.add(product);
@@ -36,7 +38,9 @@ public class Customer {
         App.supermarket.addProduct(product);
     }
 
-    public void pay(int price) {
+    public void pay() {
+        int price = 0;
+
         this.payMoney = price + 5;
         this.money -= this.payMoney;
         this.receiveChange(price);
