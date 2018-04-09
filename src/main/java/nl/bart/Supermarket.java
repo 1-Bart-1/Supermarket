@@ -38,14 +38,12 @@ public class Supermarket {
             }
     };
 
-    public int getCashDesk(int price, int money) {
-        return cashDesk.payChange(price, money);
-    }
+    Date date = App.date;
+    Date day = App.day;
 
-    private DateFormat dateFormat1 = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
-    private Date date = new Date();
-    private DateFormat dateFormat2 = new SimpleDateFormat("EEEE");
-    private Date day = new Date();
+    public int getCashDesk(ArrayList<Product> products, int money) {
+        return cashDesk.payChange(products, money);
+    }
 
     public void setBrand(String brand) {
         this.brand = brand;

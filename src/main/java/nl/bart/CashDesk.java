@@ -1,20 +1,25 @@
 package nl.bart;
 
+import java.util.ArrayList;
+
 public class CashDesk {
     private int change;
     private int money = 100;
     private int price = 0;
 
-    private int applyDiscount(Product product) {
-        product.getDiscount();
+    private int applyDiscount(ArrayList<Product> products) {
+        for (int i = 0; i < products.size() - 1; i++) {
+
+        }
+
 
         return 0;
     }
 
-    public int payChange(Product product, int money) { // price is of product, money is given by customer
-        this.price = product.getPrice();
+    public int payChange(ArrayList<Product> products, int money) { // price is of product, money is given by customer
+        this.price = products.get(0).getPrice();
 
-        this.applyDiscount(product);
+        this.applyDiscount(products);
 
         this.money += money;
         if (this.price < money) {

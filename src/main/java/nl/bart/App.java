@@ -1,12 +1,21 @@
 package nl.bart;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 
 /**
  * Hello world!
  */
 public class App {
     public final static Supermarket supermarket = new Supermarket();
+
+    public static DateFormat dateFormat1 = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
+    public static Date date = new Date();
+
+    public static DateFormat dateFormat2 = new SimpleDateFormat("EEEE");
+    public static Date day = new Date();
 
     public static void printStuff(String str) {
         System.out.print(str);

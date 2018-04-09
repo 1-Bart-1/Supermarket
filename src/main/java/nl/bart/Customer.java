@@ -43,11 +43,11 @@ public class Customer {
 
         this.payMoney = price + 5;
         this.money -= this.payMoney;
-        this.receiveChange(price);
+        this.receiveChange();
     }
 
-    public void receiveChange(int price) {
-        this.change = App.supermarket.getCashDesk(price, this.payMoney);
+    public void receiveChange() {
+        this.change = App.supermarket.getCashDesk(this.trolley, this.payMoney);
         System.out.println(this.change);
         this.money += change;
     }
