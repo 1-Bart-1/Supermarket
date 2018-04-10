@@ -38,8 +38,8 @@ public class Supermarket {
             }
     };
 
-    Date date = App.date;
-    Date day = App.day;
+    private Date date = App.date;
+    private Date day = App.day;
 
     public int getCashDesk(ArrayList<Product> products, int money) {
         return cashDesk.payChange(products, money);
