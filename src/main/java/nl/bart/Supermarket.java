@@ -53,6 +53,9 @@ public class Supermarket {
         App.printLine("Adding " + product.getName() + ", $" + product.getPrice() + ", " + product.showDiscount() + " to your " + this.brand);
 
         this.products.add(product);
+        if (this.products.size() == 4) {
+            this.products.get(3).getDiscount().setDiscountOrNot(true);
+        }
 
         App.printProducts(products, "supermarket");
     }

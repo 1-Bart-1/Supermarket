@@ -20,13 +20,18 @@ public class App {
     public static Date day = new Date();
 
     public static void printStuff(String str) {
-        System.out.print(str);
+        try {
+            System.out.print(str);
+            TimeUnit.SECONDS.sleep(0);
+        } catch (InterruptedException exe) {
+            System.out.print("Hey you almost killed me.");
+        }
     }
 
     public static void printLine(String str) {
         try {
             System.out.println(str);
-            TimeUnit.SECONDS.sleep(2);
+            TimeUnit.SECONDS.sleep(0);
         } catch (InterruptedException exe) {
             System.out.println("Hey you almost killed me.");
         }
@@ -48,18 +53,22 @@ public class App {
         Customer customer = new Customer();
 
         Discount twoForThree = new Discount(0, "2 for price of 3", "","", 5, 19, true);
-        Discount hotDeal = new Discount(99, "Hot Deal!", "", "", 5, 19, true);
-        Discount lowDeal = new Discount(-1000, "Low Deal...", "", "", 9, 19, true);
-
-        Product milk = new Product("Milk", 99, hotDeal);
         Product sugar = new Product("Sugar", 1, twoForThree);
+
+        Discount hotDeal = new Discount(99, "Hot Deal!", "Wed", "", 5, 19, false);
         Product sambal = new Product("Sambal", 199, hotDeal);
+
+        Discount yolo = new Discount(10, "You only live once, so just buy it!", "", "", 5, 20, false);
+        Product milk = new Product("Milk", 99, yolo);
+
+        Discount lowDeal = new Discount(1, "Low Deal...", "", "", 9, 19, false);
         Product carbon = new Product("Carbon", 10, lowDeal);
 
         supermarket.setBrand("Laidl");
 
         supermarket.addProduct(milk);
         supermarket.addProduct(sugar);
+
         supermarket.addProduct(sambal);
         supermarket.addProduct(carbon);
 
