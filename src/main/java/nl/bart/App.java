@@ -4,6 +4,7 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.concurrent.TimeUnit;
 
 /**
  * Hello world!
@@ -23,7 +24,12 @@ public class App {
     }
 
     public static void printLine(String str) {
-        System.out.println(str);
+        try {
+            System.out.println(str);
+            TimeUnit.SECONDS.sleep(2);
+        } catch (InterruptedException exe) {
+            System.out.println("Hey you almost killed me.");
+        }
     }
 
     public static void printProducts(ArrayList<Product> products, String toShow) {
@@ -41,7 +47,7 @@ public class App {
     public static void main(String[] args) {
         Customer customer = new Customer();
 
-        Discount twoForThree = new Discount(34, "2 for price of 3", "","", 5, 19, true);
+        Discount twoForThree = new Discount(0, "2 for price of 3", "","", 5, 19, true);
         Discount hotDeal = new Discount(99, "Hot Deal!", "", "", 5, 19, true);
         Discount lowDeal = new Discount(-1000, "Low Deal...", "", "", 9, 19, true);
 
@@ -61,8 +67,9 @@ public class App {
         System.out.println("Switching to customer's point of view...");
         System.out.println();
 
-        customer.addProduct(milk);
         customer.addProduct(sugar);
+        customer.addProduct(sugar);
+        customer.addProduct(carbon);
         customer.pay();
     }
 }

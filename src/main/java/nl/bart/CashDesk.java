@@ -22,8 +22,8 @@ public class CashDesk {
         int hourTime = App.hourTime;
         if (hourTime >= products.get(i).getDiscount().getBeginTime() && hourTime <= products.get(i).getDiscount().getEndTime()) {
             if (products.get(i).getDiscount().getName().equals("2 for price of 3")) {
-                if (i == 2) {
-                    this.calculatePrice(products); // double paying
+                if (i == 1) {
+                    this.price += (0.5 * this.price); // why doesn't this work
                 }
                 return 0;
             }
@@ -40,7 +40,7 @@ public class CashDesk {
             this.price -= (this.calculateDiscount(products, i) / 100) * this.price;
         }
         this.price = round(this.price, 2);
-        System.out.println("Your total checkout price is: " + this.price + " dollars.");
+        App.printLine("Your total checkout price is: " + this.price + " dollars.");
     }
 
     public double payChange(ArrayList<Product> products, int money) { // price is of product, money is given by customer
@@ -49,12 +49,17 @@ public class CashDesk {
         this.money += money;
         if (this.price < money) {
             this.change = money - this.price;
+            App.printLine("You paid successfully.");
         } else if (money == 0) {
-            System.out.println("Wow, just don't pay, uh?");
+            App.printLine("Wow, just don't pay, uh?");
+            App.printLine("");
+            App.printLine("You ran away succesfully.");
         } else if (this.price > money) {
-            System.out.println("Wow, just don't pay enough, uh?");
-            System.out.println("\tYou paid " + money + " dollars.");
-            System.out.println("\tYou had to pay " + this.price + " dollars.");
+            App.printLine("Wow, just don't pay enough, uh?");
+            App.printLine("\tYou paid " + money + " dollars.");
+            App.printLine("\tYou had to pay " + this.price + " dollars.");
+            App.printLine("");
+            App.printLine("You ran away successfully.");
             this.change = 0;
         }
         this.money = this.money - this.change;

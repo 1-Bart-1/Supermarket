@@ -46,7 +46,7 @@ public class Supermarket {
 
     public void setBrand(String brand) {
         this.brand = brand;
-        System.out.println("Your supermarket is a " + this.brand + ".");
+        App.printLine("Your supermarket is a " + this.brand + ".");
     }
 
     public void addProduct(Product product) {
