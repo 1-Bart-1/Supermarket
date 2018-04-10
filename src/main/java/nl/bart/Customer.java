@@ -39,16 +39,23 @@ public class Customer {
     }
 
     public void pay() {
-        int price = 0;
-
-        this.payMoney = price + 5;
+        System.out.println("You are paying...");
+        this.payMoney = 0;
+        for (int i = 0; i < this.trolley.size(); i++) {
+            this.payMoney += this.trolley.get(i).getPrice();
+        }
+        System.out.println("You gave " + this.payMoney + " dollars to the checkout.");
         this.money -= this.payMoney;
         this.receiveChange();
+
+        System.out.println("You paid successfully.");
     }
 
     public void receiveChange() {
         this.change = App.supermarket.getCashDesk(this.trolley, this.payMoney);
-        System.out.println(this.change);
-        this.money += change;
+        this.money += this.change;
+        if (this.change != 0) {
+            System.out.println("You got " + this.change + " dollars back.");
+        }
     }
 }
