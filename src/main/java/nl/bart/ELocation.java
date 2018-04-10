@@ -1,5 +1,5 @@
 package nl.bart;
 
 public enum ELocation {
-    CHECKOUT, SHELVES, ENTRANCE, OUTSIDE
+    CHECKOUT, SHELVES, OUTSIDE
 }

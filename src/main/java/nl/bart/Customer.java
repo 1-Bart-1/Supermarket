@@ -10,14 +10,18 @@ public class Customer {
     private int productsAmount = 0;
     private ArrayList<Product> trolley = new ArrayList<Product>();
     private ArrayList<Product> check = new ArrayList<Product>();
-    private ELocation location;
+    private ELocation location = ELocation.OUTSIDE;
 
     public void walk(ELocation location) {
+        System.out.println("You're walking to the " + location.toString().toLowerCase() + " of the supermarket.");
         this.location = location;
-        System.out.println("You're at the " + this.location.toString() + " of the supermarket.");
+        System.out.println("You're at the " + this.location.toString().toLowerCase() + " of the supermarket.");
     }
 
     public void addProduct(Product product) {
+        if (this.location != ELocation.SHELVES) {
+            this.walk(ELocation.SHELVES);
+        }
         this.productsAmount++;
         App.printLine("Adding " + product.getName() + ", $" + product.getPrice() + ", " + product.showDiscount() + " to your trolley.");
 
@@ -29,6 +33,9 @@ public class Customer {
     }
 
     public void removeProduct(Product product) {
+        if (this.location != ELocation.SHELVES) {
+            this.walk(ELocation.SHELVES);
+        }
         App.printLine("Removing " + product.getName() + ", $" + product.getPrice() + ", " + product.showDiscount() + " from your trolley.");
 
         this.trolley.remove(product);
@@ -39,6 +46,9 @@ public class Customer {
     }
 
     public void pay() {
+        if (this.location != ELocation.CHECKOUT) {
+            this.walk(ELocation.CHECKOUT);
+        }
         System.out.println("You are paying...");
         this.payMoney = 0;
         for (int i = 0; i < this.trolley.size(); i++) {
