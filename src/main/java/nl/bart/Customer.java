@@ -6,7 +6,7 @@ public class Customer {
     private boolean inShop;
     private int money = 100;
     private int payMoney;
-    private int change = 0;
+    private double change = 0;
     private int productsAmount = 0;
     private ArrayList<Product> trolley = new ArrayList<Product>();
     private ArrayList<Product> check = new ArrayList<Product>();

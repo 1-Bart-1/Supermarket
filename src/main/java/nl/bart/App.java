@@ -13,6 +13,7 @@ public class App {
 
     public static DateFormat dateFormat1 = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
     public static Date date = new Date();
+    public static int hourTime = Integer.parseInt("" + date.toString().charAt(11) + date.toString().charAt(12)) + 2;
 
     public static DateFormat dateFormat2 = new SimpleDateFormat("EEEE");
     public static Date day = new Date();
@@ -40,11 +41,11 @@ public class App {
     public static void main(String[] args) {
         Customer customer = new Customer();
 
-        Discount twoForThree = new Discount(34, "2 for price of 3", "","", 5, 9, true);
+        Discount twoForThree = new Discount(34, "2 for price of 3", "","", 5, 19, true);
         Discount hotDeal = new Discount(99, "Hot Deal!", "", "", 5, 19, true);
         Discount lowDeal = new Discount(-1000, "Low Deal...", "", "", 9, 19, true);
 
-        Product milk = new Product("Milk", 99, twoForThree);
+        Product milk = new Product("Milk", 99, hotDeal);
         Product sugar = new Product("Sugar", 1, twoForThree);
         Product sambal = new Product("Sambal", 199, hotDeal);
         Product carbon = new Product("Carbon", 10, lowDeal);

@@ -12,7 +12,6 @@ public class Supermarket {
     private CashDesk cashDesk = new CashDesk();
     private String brand = "Woops, I don't have a name yet...";
     private int dayOfWeek;
-    private int hourTime;
     private boolean opened;
     private final int[][] openingTimes = {
             {
@@ -41,7 +40,7 @@ public class Supermarket {
     private Date date = App.date;
     private Date day = App.day;
 
-    public int getCashDesk(ArrayList<Product> products, int money) {
+    public double getCashDesk(ArrayList<Product> products, int money) {
         return cashDesk.payChange(products, money);
     }
 
@@ -87,8 +86,8 @@ public class Supermarket {
 
     public void openClose() {
         this.dayOfWeek = this.getDayOfWeekNumber();
-        this.hourTime = Integer.parseInt("" + this.date.toString().charAt(11) + this.date.toString().charAt(12)) + 2;
-        if ((this.hourTime >= this.openingTimes[dayOfWeek][0]) && (this.hourTime <= this.openingTimes[dayOfWeek][1])) {
+        int hourTime = App.hourTime;
+        if ((hourTime >= this.openingTimes[dayOfWeek][0]) && (hourTime <= this.openingTimes[dayOfWeek][1])) {
             this.opened = true;
             App.printLine("Whoohooo! The " + this.brand + " is opened now!");
             return;
