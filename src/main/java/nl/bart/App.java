@@ -78,7 +78,7 @@ public class App {
 
         customer.addProduct(sugar);
         customer.addProduct(sugar);
-        customer.addProduct(carbon);
+//        customer.addProduct(carbon);
         customer.pay();
     }
 }

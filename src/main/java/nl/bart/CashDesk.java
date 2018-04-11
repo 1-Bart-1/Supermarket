@@ -8,29 +8,29 @@ public class CashDesk {
     private double change;
     private double money = 100;
     private double price = 0;
+    private int productNumber = 0;
 
-    private static double round(double value, int places) {
-        if (places < 0) throw new IllegalArgumentException();
-
+    private static double round(double value) {
         BigDecimal bd = new BigDecimal(value);
-        bd = bd.setScale(places, RoundingMode.HALF_UP);
+        bd = bd.setScale(2, RoundingMode.HALF_UP);
         return bd.doubleValue();
     }
 
-    private double calculateDiscount(ArrayList<Product> products, int i) {
+    private double calculateDiscount(ArrayList<Product> products) {
         double discount = 0;
         int hourTime = App.hourTime;
-        if (products.get(i).getDiscount().isDiscountOrNot()) {
-            if (App.day.toString().contains(products.get(i).getDiscount().getBeginDate()) || products.get(i).getDiscount().getBeginDate().equals("")) {
-                if (hourTime >= products.get(i).getDiscount().getBeginTime() && hourTime <= products.get(i).getDiscount().getEndTime()) {
-                    if (products.get(i).getDiscount().getName().equals("2 for price of 3")) {
-                        if (i == 1) {
-                            this.price += (0.5 * this.price); // why doesn't this work
+        if (products.get(productNumber).getDiscount().isDiscountOrNot()) {
+            if (App.day.toString().contains(products.get(this.productNumber).getDiscount().getBeginDate()) || products.get(this.productNumber).getDiscount().getBeginDate().equals("")) {
+                if (hourTime >= products.get(this.productNumber).getDiscount().getBeginTime() && hourTime <= products.get(this.productNumber).getDiscount().getEndTime()) {
+                    if (products.get(this.productNumber).getDiscount().getName().equals("2 for price of 3")) {
+                        if (this.productNumber == 1) {
+                            this.price += (0.5 * this.price);
+                            App.printLine("" + this.price);
                         }
                         return 0;
                     }
-                    App.printLine("You've got a discount on your " + products.get(i).getName() + "!");
-                    discount = products.get(i).getDiscount().getPercentage();
+                    App.printLine("You've got a discount on your " + products.get(this.productNumber).getName() + "!");
+                    discount = products.get(this.productNumber).getDiscount().getPercentage();
                     return discount;
                 }
             }
@@ -41,11 +41,11 @@ public class CashDesk {
 
     private void calculatePrice(ArrayList<Product> products) {
         this.price = 0;
-        for (int i = 0; i < products.size(); i++) {
-            this.price += products.get(i).getPrice();
-            this.price -= (this.calculateDiscount(products, i) / 100) * this.price;
+        for (this.productNumber = 0; this.productNumber < products.size(); this.productNumber++) {
+            this.price += products.get(this.productNumber).getPrice();
+            this.price = this.calculateDiscount(products) != 0 ? (this.calculateDiscount(products) / 100) * this.price : this.price;
         }
-        this.price = round(this.price, 2);
+        this.price = round(this.price);
         App.printLine("Your total checkout price is: " + this.price + " dollars.");
     }
 
@@ -59,7 +59,7 @@ public class CashDesk {
         } else if (money == 0) {
             App.printLine("Wow, just don't pay, uh?");
             App.printLine("");
-            App.printLine("You ran away succesfully.");
+            App.printLine("You ran away successfully.");
         } else if (this.price > money) {
             App.printLine("Wow, just don't pay enough, uh?");
             App.printLine("\tYou paid " + money + " dollars.");
@@ -69,7 +69,7 @@ public class CashDesk {
             this.change = 0;
         }
         this.money = this.money - this.change;
-        this.change = round(this.change, 2);
+        this.change = round(this.change);
         return this.change;
     }
 }
