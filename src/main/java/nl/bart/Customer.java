@@ -27,6 +27,10 @@ public class Customer {
 
         this.trolley.add(product);
 
+        if (this.trolley.size() == 4) {
+            this.trolley.get(3).getDiscount().setDiscountOrNot(true);
+        }
+
         App.printProducts(trolley, "trolley");
 
         App.supermarket.removeProduct(product);
@@ -51,15 +55,15 @@ public class Customer {
         }
         App.printLine("You are paying...");
         this.payMoney = 0;
-        for (int i = 0; i < this.trolley.size(); i++) {
-            this.payMoney += this.trolley.get(i).getPrice();
+        for (Product aTrolley : this.trolley) {
+            this.payMoney += aTrolley.getPrice();
         }
         App.printLine("You gave " + this.payMoney + " dollars to the checkout.");
         this.money -= this.payMoney;
         this.receiveChange();
     }
 
-    public void receiveChange() {
+    private void receiveChange() {
         this.change = App.supermarket.getCashDesk(this.trolley, this.payMoney);
         this.money += this.change;
         if (this.change != 0) {

@@ -58,7 +58,7 @@ public class App {
         Discount hotDeal = new Discount(99, "Hot Deal!", "Wed", "", 5, 19, false);
         Product sambal = new Product("Sambal", 199, hotDeal);
 
-        Discount yolo = new Discount(10, "You only live once, so just buy it!", "", "", 5, 20, false);
+        Discount yolo = new Discount(10, "You only live once, so just buy it!", "", "", 5, 9, false);
         Product milk = new Product("Milk", 99, yolo);
 
         Discount lowDeal = new Discount(1, "Low Deal...", "", "", 9, 19, false);
@@ -78,7 +78,8 @@ public class App {
 
         customer.addProduct(sugar);
         customer.addProduct(sugar);
-//        customer.addProduct(carbon);
+        customer.addProduct(carbon);
+        customer.addProduct(carbon);
         customer.pay();
     }
 }

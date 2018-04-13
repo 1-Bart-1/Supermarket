@@ -19,6 +19,8 @@ public class CashDesk {
     private double calculateDiscount(ArrayList<Product> products) {
         double discount = 0;
         int hourTime = App.hourTime;
+        System.out.println(products.get(productNumber).getName());
+        System.out.println(products.get(productNumber).getDiscount().isDiscountOrNot());
         if (products.get(productNumber).getDiscount().isDiscountOrNot()) {
             if (App.day.toString().contains(products.get(this.productNumber).getDiscount().getBeginDate()) || products.get(this.productNumber).getDiscount().getBeginDate().equals("")) {
                 if (hourTime >= products.get(this.productNumber).getDiscount().getBeginTime() && hourTime <= products.get(this.productNumber).getDiscount().getEndTime()) {
@@ -29,13 +31,11 @@ public class CashDesk {
                         }
                         return 0;
                     }
-                    App.printLine("You've got a discount on your " + products.get(this.productNumber).getName() + "!");
                     discount = products.get(this.productNumber).getDiscount().getPercentage();
                     return discount;
                 }
             }
         }
-
         return 0;
     }
 

@@ -37,7 +37,6 @@ public class Supermarket {
             }
     };
 
-    private Date date = App.date;
     private Date day = App.day;
 
     public double getCashDesk(ArrayList<Product> products, int money) {
@@ -53,11 +52,8 @@ public class Supermarket {
         App.printLine("Adding " + product.getName() + ", $" + product.getPrice() + ", " + product.showDiscount() + " to your " + this.brand);
 
         this.products.add(product);
-        if (this.products.size() == 4) {
-            this.products.get(3).getDiscount().setDiscountOrNot(true);
-        }
 
-        App.printProducts(products, "supermarket");
+        App.printProducts(this.products, "supermarket");
     }
 
     public void removeProduct(Product product) {
@@ -69,21 +65,13 @@ public class Supermarket {
     }
 
     private int getDayOfWeekNumber() {
-        if (this.day.toString().contains("Mon")) {
-            return 0;
-        } else if (this.day.toString().contains("Tue")) {
-            return 1;
-        } else if (this.day.toString().contains("Wed")) {
-            return 2;
-        } else if (this.day.toString().contains("Thu")) {
-            return 3;
-        } else if (this.day.toString().contains("Fri")) {
-            return 4;
-        } else if (this.day.toString().contains("Sat")) {
-            return 5;
-        } else if (this.day.toString().contains("Sun")) {
-            return 6;
-        }
+        if (this.day.toString().contains("Mon")) return 0;
+        if (this.day.toString().contains("Tue")) return 1;
+        if (this.day.toString().contains("Wed")) return 2;
+        if (this.day.toString().contains("Thu")) return 3;
+        if (this.day.toString().contains("Fri")) return 4;
+        if (this.day.toString().contains("Sat")) return 5;
+        if (this.day.toString().contains("Sun")) return 6;
         return -1;
     }
 
