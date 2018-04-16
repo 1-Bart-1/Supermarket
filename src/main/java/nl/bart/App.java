@@ -63,6 +63,9 @@ public class App {
 
         Discount lowDeal = new Discount(1, "Low Deal...", "", "", 9, 19, false);
         Product carbon = new Product("Carbon", 10, lowDeal);
+        
+        Discount lowDeal1 = new Discount(1, "Low Deal...", "", "", 9, 19, false);
+        Product carbon1 = new Product("Carbon", 10, lowDeal1);
 
         supermarket.setBrand("Laidl");
 
@@ -79,7 +82,7 @@ public class App {
         customer.addProduct(sugar);
         customer.addProduct(sugar);
         customer.addProduct(carbon);
-        customer.addProduct(carbon);
+        customer.addProduct(carbon1);
         customer.pay();
     }
 }
