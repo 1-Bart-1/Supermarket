@@ -12,14 +12,35 @@ import java.util.concurrent.TimeUnit;
 public class App {
     public final static Supermarket supermarket = new Supermarket();
 
-    public static DateFormat dateFormat1 = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
-    public static Date date = new Date();
+    private static Date date = new Date();
     public static int hourTime = Integer.parseInt("" + date.toString().charAt(11) + date.toString().charAt(12)) + 2;
 
     public static DateFormat dateFormat2 = new SimpleDateFormat("EEEE");
     public static Date day = new Date();
 
-    public static void printStuff(String str) {
+    public static int getDayOfWeekNumber() {
+        if (day.toString().contains("Mon")) return 0;
+        if (day.toString().contains("Tue")) return 1;
+        if (day.toString().contains("Wed")) return 2;
+        if (day.toString().contains("Thu")) return 3;
+        if (day.toString().contains("Fri")) return 4;
+        if (day.toString().contains("Sat")) return 5;
+        if (day.toString().contains("Sun")) return 6;
+        return -1;
+    }
+
+    public static int getDayNumber(String d) {
+        if (day.toString().contains("Mon")) return 0;
+        if (day.toString().contains("Tue")) return 1;
+        if (day.toString().contains("Wed")) return 2;
+        if (day.toString().contains("Thu")) return 3;
+        if (day.toString().contains("Fri")) return 4;
+        if (day.toString().contains("Sat")) return 5;
+        if (day.toString().contains("Sun")) return 6;
+        return -1;
+    }
+
+    private static void printStuff(String str) {
         try {
             System.out.print(str);
             TimeUnit.SECONDS.sleep(0);
@@ -52,19 +73,19 @@ public class App {
     public static void main(String[] args) {
         Customer customer = new Customer();
 
-        Discount twoForThree = new Discount(0, "2 for price of 3", "","", 5, 19, true);
+        Discount twoForThree = new Discount(0, "2 for price of 3", "Mon","Mon", 5, 19, true);
         Product sugar = new Product("Sugar", 1, twoForThree);
 
-        Discount hotDeal = new Discount(99, "Hot Deal!", "Wed", "", 5, 19, false);
+        Discount hotDeal = new Discount(99, "Hot Deal!", "Wed", "Wed", 5, 19, false);
         Product sambal = new Product("Sambal", 199, hotDeal);
 
-        Discount yolo = new Discount(10, "You only live once, so just buy it!", "", "", 5, 9, false);
+        Discount yolo = new Discount(10, "You only live once, so just buy it!", "Mon", "Sun", 5, 9, false);
         Product milk = new Product("Milk", 99, yolo);
 
-        Discount lowDeal = new Discount(1, "Low Deal...", "", "", 9, 19, false);
+        Discount lowDeal = new Discount(1, "Low Deal...", "Mon", "Sun", 9, 19, false);
         Product carbon = new Product("Carbon", 10, lowDeal);
-        
-        Discount lowDeal1 = new Discount(1, "Low Deal...", "", "", 9, 19, false);
+
+        Discount lowDeal1 = new Discount(1, "Low Deal...", "Mon", "Sun", 9, 19, false);
         Product carbon1 = new Product("Carbon", 10, lowDeal1);
 
         supermarket.setBrand("Laidl");

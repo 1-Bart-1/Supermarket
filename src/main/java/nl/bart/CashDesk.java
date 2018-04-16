@@ -16,13 +16,19 @@ public class CashDesk {
         return bd.doubleValue();
     }
 
+    private int getDayOfWeekNumber() {
+        return App.getDayOfWeekNumber();
+    }
+
+    private int getDayNumber(String d) {
+        return App.getDayNumber(d);
+    }
+
     private double calculateDiscount(ArrayList<Product> products) {
         double discount = 0;
         int hourTime = App.hourTime;
-        System.out.println(products.get(productNumber).getName());
-        System.out.println(products.get(productNumber).getDiscount().isDiscountOrNot());
         if (products.get(productNumber).getDiscount().isDiscountOrNot()) {
-            if (App.day.toString().contains(products.get(this.productNumber).getDiscount().getBeginDate()) || products.get(this.productNumber).getDiscount().getBeginDate().equals("")) {
+            if ((getDayOfWeekNumber() >= getDayNumber(products.get(productNumber).getDiscount().getBeginDate())) && (getDayOfWeekNumber() <= getDayNumber(products.get(productNumber).getDiscount().getEndDate()))) {
                 if (hourTime >= products.get(this.productNumber).getDiscount().getBeginTime() && hourTime <= products.get(this.productNumber).getDiscount().getEndTime()) {
                     if (products.get(this.productNumber).getDiscount().getName().equals("2 for price of 3")) {
                         if (this.productNumber == 1) {

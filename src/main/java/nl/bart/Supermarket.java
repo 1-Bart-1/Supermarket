@@ -65,14 +65,7 @@ public class Supermarket {
     }
 
     private int getDayOfWeekNumber() {
-        if (this.day.toString().contains("Mon")) return 0;
-        if (this.day.toString().contains("Tue")) return 1;
-        if (this.day.toString().contains("Wed")) return 2;
-        if (this.day.toString().contains("Thu")) return 3;
-        if (this.day.toString().contains("Fri")) return 4;
-        if (this.day.toString().contains("Sat")) return 5;
-        if (this.day.toString().contains("Sun")) return 6;
-        return -1;
+        return App.getDayOfWeekNumber();
     }
 
     public void openClose() {
