@@ -24,20 +24,20 @@ public class CashDesk {
         return App.getDayNumber(d);
     }
 
-    private double calculateDiscount(ArrayList<Product> products) {
+    private double calculateDiscount(ArrayList<Product> products, int i) { // i is discountNumber
         double discount = 0;
         int hourTime = App.hourTime;
-        if (products.get(productNumber).getDiscount().isDiscountOrNot()) {
-            if ((getDayOfWeekNumber() >= getDayNumber(products.get(productNumber).getDiscount().getBeginDate())) && (getDayOfWeekNumber() <= getDayNumber(products.get(productNumber).getDiscount().getEndDate()))) {
-                if (hourTime >= products.get(this.productNumber).getDiscount().getBeginTime() && hourTime <= products.get(this.productNumber).getDiscount().getEndTime()) {
-                    if (products.get(this.productNumber).getDiscount().getName().equals("2 for price of 3")) {
+        if (products.get(productNumber).getDiscount(i).isDiscountOrNot()) {
+            if ((getDayOfWeekNumber() >= getDayNumber(products.get(productNumber).getDiscount(i).getBeginDate())) && (getDayOfWeekNumber() <= getDayNumber(products.get(productNumber).getDiscount(i).getEndDate()))) {
+                if (hourTime >= products.get(this.productNumber).getDiscount(i).getBeginTime() && hourTime <= products.get(this.productNumber).getDiscount(i).getEndTime()) {
+                    if (products.get(this.productNumber).getDiscount(i).getName().equals("2 for price of 3")) {
                         if (this.productNumber == 1) {
                             this.price += (0.5 * this.price);
                             App.printLine("" + this.price);
                         }
                         return 0;
                     }
-                    discount = products.get(this.productNumber).getDiscount().getPercentage();
+                    discount = products.get(this.productNumber).getDiscount(i).getPercentage();
                     return discount;
                 }
             }
@@ -49,7 +49,9 @@ public class CashDesk {
         this.price = 0;
         for (this.productNumber = 0; this.productNumber < products.size(); this.productNumber++) {
             this.price += products.get(this.productNumber).getPrice();
-            this.price = this.calculateDiscount(products) != 0 ? (this.calculateDiscount(products) / 100) * this.price : this.price;
+            for (int i = 0; i < products.get(productNumber).getDiscounts().size(); i++) {
+                this.price = this.calculateDiscount(products, i) != 0 ? (this.calculateDiscount(products, i) / 100) * this.price : this.price;
+            }
         }
         this.price = round(this.price);
         App.printLine("Your total checkout price is: " + this.price + " dollars.");

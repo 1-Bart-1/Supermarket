@@ -49,7 +49,7 @@ public class Supermarket {
     }
 
     public void addProduct(Product product) {
-        App.printLine("Adding " + product.getName() + ", $" + product.getPrice() + ", " + product.showDiscount() + " to your " + this.brand);
+        App.printLine("Adding " + product.getName() + ", $" + product.getPrice() + ", " + product.showDiscount(0) + " to your " + this.brand);
 
         this.products.add(product);
 
@@ -57,7 +57,7 @@ public class Supermarket {
     }
 
     public void removeProduct(Product product) {
-        App.printLine("Removing " + product.getName() + ", $" + product.getPrice() + ", " + product.showDiscount() + " from your " + this.brand);
+        App.printLine("Removing " + product.getName() + ", $" + product.getPrice() + ", " + product.showDiscount(0) + " from your " + this.brand);
 
         this.products.remove(product);
 

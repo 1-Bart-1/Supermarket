@@ -5,12 +5,12 @@ import java.util.ArrayList;
 public class Product {
     private String name;
     private int price;
-    private Discount discount;
+    private ArrayList<Discount> discounts = new ArrayList<Discount>();
 
     public Product(String name, int price, Discount discount) {
         this.name = name;
         this.price = price;
-        this.discount = discount;
+        this.discounts.add(discount);
     }
 
     public String getName() {
@@ -29,15 +29,19 @@ public class Product {
         this.price = price;
     }
 
-    public Discount getDiscount() {
-        return discount;
+    public ArrayList<Discount> getDiscounts() {
+        return discounts;
     }
 
-    public void setDiscount(Discount discount) {
-        this.discount = discount;
+    public void setDiscounts(ArrayList<Discount> discounts) {
+        this.discounts = discounts;
     }
 
-    public String showDiscount() {
-        return this.discount.getName();
+    public Discount getDiscount(int i) {
+        return discounts.get(i);
+    }
+
+    public String showDiscount(int i) {
+        return this.discounts.get(i).getName();
     }
 }

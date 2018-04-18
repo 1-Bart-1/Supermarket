@@ -6,13 +6,12 @@ public class Customer {
     private boolean inShop;
     private int money = 100;
     private int payMoney;
-    private double change = 0;
     private int productsAmount = 0;
     private ArrayList<Product> trolley = new ArrayList<Product>();
     private ArrayList<Product> check = new ArrayList<Product>();
     private ELocation location = ELocation.OUTSIDE;
 
-    public void walk(ELocation location) {
+    private void walk(ELocation location) {
         App.printLine("You're walking to the " + location.toString().toLowerCase() + " of the supermarket.");
         this.location = location;
         App.printLine("You're at the " + this.location.toString().toLowerCase() + " of the supermarket.");
@@ -23,12 +22,14 @@ public class Customer {
             this.walk(ELocation.SHELVES);
         }
         this.productsAmount++;
-        App.printLine("Adding " + product.getName() + ", $" + product.getPrice() + ", " + product.showDiscount() + " to your trolley.");
+        App.printLine("Adding " + product.getName() + ", $" + product.getPrice() + ", " + product.showDiscount(0) + " to your trolley.");
 
         this.trolley.add(product);
 
         if (this.trolley.size() == 4) {
-            this.trolley.get(3).getDiscount().setDiscountOrNot(true);
+            for (int i = 0; i < this.trolley.get(3).getDiscounts().size(); i++) {
+                this.trolley.get(3).getDiscounts().get(i).setDiscountOrNot(true);
+            }
         }
 
         App.printProducts(trolley, "trolley");
@@ -40,7 +41,7 @@ public class Customer {
         if (this.location != ELocation.SHELVES) {
             this.walk(ELocation.SHELVES);
         }
-        App.printLine("Removing " + product.getName() + ", $" + product.getPrice() + ", " + product.showDiscount() + " from your trolley.");
+        App.printLine("Removing " + product.getName() + ", $" + product.getPrice() + ", " + product.showDiscount(0) + " from your trolley.");
 
         this.trolley.remove(product);
 
@@ -64,10 +65,10 @@ public class Customer {
     }
 
     private void receiveChange() {
-        this.change = App.supermarket.getCashDesk(this.trolley, this.payMoney);
-        this.money += this.change;
-        if (this.change != 0) {
-            App.printLine("You got " + this.change + " dollars back.");
+        double change = App.supermarket.getCashDesk(this.trolley, this.payMoney);
+        this.money += change;
+        if (change != 0) {
+            App.printLine("You got " + change + " dollars back.");
         }
     }
 }

@@ -61,7 +61,7 @@ public class App {
     public static void printProducts(ArrayList<Product> products, String toShow) {
         System.out.println("This is in your " + toShow + ":");
         for (int i = 0; i < products.size(); i++) {
-            printStuff("\t" + products.get(i).getName() + ", $" + products.get(i).getPrice() + ", " + products.get(i).showDiscount());
+            printStuff("\t" + products.get(i).getName() + ", $" + products.get(i).getPrice() + ", " + products.get(i).showDiscount(0));
             if (i != products.size() - 1) {
                 printLine(",");
             } else {
@@ -73,10 +73,10 @@ public class App {
     public static void main(String[] args) {
         Customer customer = new Customer();
 
-        Discount twoForThree = new Discount(0, "2 for price of 3", "Mon","Mon", 5, 19, true);
+        Discount twoForThree = new Discount(0, "2 for price of 3", "Mon","Sun", 5, 19, true);
         Product sugar = new Product("Sugar", 1, twoForThree);
 
-        Discount hotDeal = new Discount(99, "Hot Deal!", "Wed", "Wed", 5, 19, false);
+        Discount hotDeal = new Discount(99, "Hot Deal!", "Mon", "Sun", 5, 19, false);
         Product sambal = new Product("Sambal", 199, hotDeal);
 
         Discount yolo = new Discount(10, "You only live once, so just buy it!", "Mon", "Sun", 5, 9, false);
