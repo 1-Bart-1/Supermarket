@@ -9,6 +9,7 @@ public class CashDesk {
     private double money = 100;
     private double price = 0;
     private int productNumber = 0;
+    private double productPrice;
 
     private static double round(double value) {
         BigDecimal bd = new BigDecimal(value);
@@ -32,13 +33,15 @@ public class CashDesk {
                 if (hourTime >= products.get(this.productNumber).getDiscount(i).getBeginTime() && hourTime <= products.get(this.productNumber).getDiscount(i).getEndTime()) {
                     if (products.get(this.productNumber).getDiscount(i).getName().equals("2 for price of 3")) {
                         if (this.productNumber == 1) {
-                            this.price += (0.5 * this.price);
-                            App.printLine("" + this.price);
+                            this.price += productPrice;
                         }
                         return 0;
                     }
+                    if (products.get(this.productNumber).getDiscount(i).getName().equals("Dollar Power")) {
+                        productPrice = 1;
+                    }
                     discount = products.get(this.productNumber).getDiscount(i).getPercentage();
-                    return discount;
+                    return 100 - discount; // discount is wrong way around
                 }
             }
         }
@@ -48,12 +51,12 @@ public class CashDesk {
     private void calculatePrice(ArrayList<Product> products) {
         this.price = 0;
         for (this.productNumber = 0; this.productNumber < products.size(); this.productNumber++) {
-            double productPrice = 0;
             productPrice = products.get(this.productNumber).getPrice();
             for (int i = 0; i < products.get(productNumber).getDiscounts().size(); i++) {
                 productPrice = this.calculateDiscount(products, i) != 0 ? (this.calculateDiscount(products, i) / 100) * productPrice : productPrice;
             }
             this.price += productPrice;
+            App.printLine(products.get(productNumber).getName() + " : $" + productPrice);
         }
         this.price = round(this.price);
         App.printLine("Your total checkout price is: " + this.price + " dollars.");

@@ -74,25 +74,37 @@ public class App {
         Customer customer = new Customer();
 
         Discount twoForThree = new Discount(0, "2 for price of 3", "Mon","Sun", 5, 19, true);
-        Product sugar = new Product("Sugar", 1, twoForThree);
-
+        Discount justRandom = new Discount (99, "rrrrrandom", "Mon", "Sun", 9, 21, false);
         Discount hotDeal = new Discount(99, "Hot Deal!", "Mon", "Sun", 5, 19, false);
-        Product sambal = new Product("Sambal", 199, hotDeal);
-
         Discount yolo = new Discount(10, "You only live once, so just buy it!", "Mon", "Sun", 5, 9, false);
-        Product milk = new Product("Milk", 99, yolo);
-
         Discount lowDeal = new Discount(1, "Low Deal...", "Mon", "Sun", 9, 19, false);
-        Product carbon = new Product("Carbon", 10, lowDeal);
+        Discount dollarPower = new Discount(0, "Dollar Power", "Thu", "Thu", 0, 24, false);
 
-        Discount lowDeal1 = new Discount(1, "Low Deal...", "Mon", "Sun", 9, 19, false);
-        Product carbon1 = new Product("Carbon", 10, lowDeal1);
+        ArrayList<Discount> sugarDiscounts = new ArrayList<Discount>();
+        sugarDiscounts.add(twoForThree);
+        sugarDiscounts.add(justRandom);
+        Product sugar = new Product("Sugar", 1, sugarDiscounts);
+
+        ArrayList<Discount> sambalDiscounts = new ArrayList<Discount>();
+        sambalDiscounts.add(hotDeal);
+        Product sambal = new Product("Sambal", 199, sambalDiscounts);
+
+        ArrayList<Discount> milkDiscounts = new ArrayList<Discount>();
+        milkDiscounts.add(yolo);
+        milkDiscounts.add(dollarPower);
+        Product milk = new Product("Milk", 99, milkDiscounts);
+
+        ArrayList<Discount> carbonDiscounts = new ArrayList<Discount>();
+        carbonDiscounts.add(lowDeal);
+        Product carbon = new Product("Carbon", 10, carbonDiscounts);
+
+        carbon.getDiscount(0).setDiscountOrNot(false);
+        Product carbon1 = new Product(carbon);
 
         supermarket.setBrand("Laidl");
 
         supermarket.addProduct(milk);
         supermarket.addProduct(sugar);
-
         supermarket.addProduct(sambal);
         supermarket.addProduct(carbon);
 

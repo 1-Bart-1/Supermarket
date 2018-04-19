@@ -7,10 +7,16 @@ public class Product {
     private int price;
     private ArrayList<Discount> discounts = new ArrayList<Discount>();
 
-    public Product(String name, int price, Discount discount) {
+    public Product(String name, int price, ArrayList<Discount> discounts) {
         this.name = name;
         this.price = price;
-        this.discounts.add(discount);
+        this.discounts = discounts;
+    }
+
+    public Product(Product product) {
+        this.name = product.getName();
+        this.price = product.getPrice();
+        this.discounts = product.getDiscounts();
     }
 
     public String getName() {
