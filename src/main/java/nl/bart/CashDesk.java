@@ -48,10 +48,12 @@ public class CashDesk {
     private void calculatePrice(ArrayList<Product> products) {
         this.price = 0;
         for (this.productNumber = 0; this.productNumber < products.size(); this.productNumber++) {
-            this.price += products.get(this.productNumber).getPrice();
+            double productPrice = 0;
+            productPrice = products.get(this.productNumber).getPrice();
             for (int i = 0; i < products.get(productNumber).getDiscounts().size(); i++) {
-                this.price = this.calculateDiscount(products, i) != 0 ? (this.calculateDiscount(products, i) / 100) * this.price : this.price;
+                productPrice = this.calculateDiscount(products, i) != 0 ? (this.calculateDiscount(products, i) / 100) * productPrice : productPrice;
             }
+            this.price += productPrice;
         }
         this.price = round(this.price);
         App.printLine("Your total checkout price is: " + this.price + " dollars.");
